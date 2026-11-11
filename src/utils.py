@@ -41,3 +41,22 @@ def get_logger(name: str, level: int = logging.INFO) -> logging.Logger:
         logger.addHandler(handler)
     logger.setLevel(level)
     return logger
+
+
+def split_boundaries(cfg: dict) -> dict:
+    """Chronological train / validation / test cut-offs derived from the config.
+
+    Whole days, earliest -> train, middle -> validation, latest -> test. Anything that is
+    *fitted* (imputation medians, scalers) must use only timestamps < ``train_end``.
+    """
+    import pandas as pd
+
+    start = pd.Timestamp(cfg["data"]["date_start"])
+    n_days = (pd.Timestamp(cfg["data"]["date_end"]) - start).days + 1
+    n_train = int(n_days * cfg["split"]["train_frac"])
+    n_val = int(n_days * cfg["split"]["val_frac"])
+    return {
+        "train_end": start + pd.Timedelta(days=n_train),
+        "val_end": start + pd.Timedelta(days=n_train + n_val),
+        "n_train_days": n_train, "n_val_days": n_val, "n_test_days": n_days - n_train - n_val,
+    }

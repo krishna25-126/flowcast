@@ -1,0 +1,87 @@
+{
+  "split": {
+    "train_end": "2025-04-16 00:00:00",
+    "val_end": "2025-05-08 00:00:00",
+    "n_train_days": "105",
+    "n_val_days": "22",
+    "n_test_days": "24"
+  },
+  "calendar": {
+    "rows": 151
+  },
+  "weather": {
+    "dedup": {
+      "duplicates_removed": 0,
+      "of_which_exact": 0
+    },
+    "labels_before": 13,
+    "labels_after": 4,
+    "unknown_labels_nulled": 0,
+    "hours_reconstructed": 0,
+    "imputed": {
+      "temperature": 167,
+      "rainfall": 0,
+      "visibility": 111
+    }
+  },
+  "traffic": {
+    "dedup": {
+      "duplicates_removed": 1767,
+      "of_which_exact": 1767
+    },
+    "recovered": {
+      "traffic_volume_from_vehicle_count": 4587,
+      "avg_speed_from_travel_time": 4579
+    },
+    "statistical_outliers": {
+      "traffic_volume": {
+        "robust_z_flagged": 504,
+        "iqr_flagged": 759,
+        "extreme_nulled": 0,
+        "extreme_kept_calendar_day": 5,
+        "flagged_on_holiday_event_roadwork_days_pct": 100.0
+      },
+      "avg_speed": {
+        "robust_z_flagged": 333,
+        "iqr_flagged": 449,
+        "extreme_nulled": 0,
+        "extreme_kept_calendar_day": 5,
+        "flagged_on_holiday_event_roadwork_days_pct": 98.5
+      },
+      "occupancy": {
+        "robust_z_flagged": 155,
+        "iqr_flagged": 271,
+        "extreme_nulled": 0,
+        "extreme_kept_calendar_day": 1,
+        "flagged_on_holiday_event_roadwork_days_pct": 100.0
+      }
+    },
+    "windows_reconstructed": 4499,
+    "fill_methods": {
+      "volume": {
+        "observed": 172114,
+        "recovered": 4587,
+        "interpolated": 4498,
+        "median": 1
+      },
+      "speed": {
+        "observed": 172122,
+        "recovered": 4579,
+        "interpolated": 4498,
+        "median": 1
+      },
+      "occupancy": {
+        "observed": 172128,
+        "interpolated": 9067,
+        "median": 5
+      }
+    },
+    "travel_time_recomputed": 4499,
+    "congestion_label_agreement_with_VC_rule": {
+      "observed_volume_rows": 1.0,
+      "recovered_volume_rows": 1.0
+    },
+    "congestion_derived": 31123,
+    "rows_out": 181200
+  }
+}
