@@ -4,7 +4,7 @@ Predicts **traffic volume, congestion level, travel time and accident risk** per
 for the 25-segment Northline Corridor, using sensor, weather and calendar data, and serves
 the results through an interactive Streamlit dashboard.
 
-> **Status:** Step 1 of 10 complete (repo setup). See [docs/ROADMAP.md](docs/ROADMAP.md).
+> **Status:** Step 2 of 10 complete (ingestion & validation). See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## Targets (PRD section 3.3)
 | Task | Metric | Target |
@@ -22,6 +22,7 @@ python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 python scripts/check_data.py     # verify raw data loads
+python -m src.ingest             # validate raw data -> data/interim + quarantine log
 python -m pytest -q              # run tests
 ```
 

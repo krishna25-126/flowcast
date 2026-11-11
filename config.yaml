@@ -22,11 +22,29 @@ data:
   date_start: "2025-01-01"
   date_end: "2025-05-31"
 
-# Validation ranges (PRD section 9 / data dictionary section 5)
+# Validation rules used by src/ingest.py (PRD section 9 stage 1, data dictionary section 5)
 validation:
-  traffic_volume: {min: 0}
-  avg_speed: {min: 0, max: 200}
-  occupancy: {min: 0, max: 100}
+  road_id_pattern: '^NL-\d{3}$'
+  weather_stations: [WS-NORTH, WS-CENTRAL, WS-SOUTH]
+  vehicle_share_tolerance: 0.02      # vehicle_type_dist shares must sum to 1 +/- this
+  # Required fields: a violation REMOVES the row (logged to quarantine)
+  traffic_required:
+    latitude: {min: -90, max: 90}
+    longitude: {min: -180, max: 180}
+    signal_timing: {min: 0, max: 600}
+    road_capacity: {min: 1, max: 20000}
+    accident_count: {min: 0, max: 100}
+  # Optional measurements: a violation NULLS the value, keeps the row (logged to quarantine)
+  traffic:
+    traffic_volume: {min: 0, max: 10000}
+    vehicle_count: {min: 0, max: 10000}
+    avg_speed: {min: 0, max: 200}
+    occupancy: {min: 0, max: 100}
+    travel_time: {min: 0, max: 240}
+  weather:
+    temperature: {min: -30, max: 55}
+    rainfall: {min: 0, max: 300}
+    visibility: {min: 0, max: 20000}
 
 # Congestion banding on V/C = volume / (road_capacity / 2)
 congestion_bands:

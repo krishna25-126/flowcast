@@ -1,0 +1,62 @@
+{
+  "calendar": {
+    "rows_in": 151,
+    "rows_out": 151,
+    "missing_dates": 0,
+    "quarantined_records": 0,
+    "rows_removed": 0,
+    "quarantine_breakdown": []
+  },
+  "weather": {
+    "rows_in": 10872,
+    "rows_out": 10872,
+    "duplicate_keys": 0,
+    "expected_hours": 10872,
+    "missing_hours": 0,
+    "nulls_remaining": {
+      "weather_condition": 0,
+      "temperature": 167,
+      "rainfall": 0,
+      "visibility": 111
+    },
+    "quarantined_records": 0,
+    "rows_removed": 0,
+    "quarantine_breakdown": []
+  },
+  "traffic": {
+    "rows_in": 178468,
+    "rows_out": 178468,
+    "segments": 25,
+    "duplicate_keys": 1767,
+    "expected_windows": 181200,
+    "missing_windows": 4499,
+    "nulls_remaining": {
+      "traffic_volume": 4628,
+      "avg_speed": 4619,
+      "occupancy": 4617,
+      "congestion_level": 26883
+    },
+    "quarantined_records": 712,
+    "rows_removed": 0,
+    "quarantine_breakdown": [
+      {
+        "field": "traffic_volume",
+        "reason": "outside [0, 10000]",
+        "action": "value_nulled",
+        "count": 241
+      },
+      {
+        "field": "avg_speed",
+        "reason": "outside [0, 200]",
+        "action": "value_nulled",
+        "count": 237
+      },
+      {
+        "field": "occupancy",
+        "reason": "outside [0, 100]",
+        "action": "value_nulled",
+        "count": 234
+      }
+    ]
+  }
+}
