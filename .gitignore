@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+.mypy_cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Generated data (rebuilt by the pipeline) - raw data IS tracked
+data/interim/*
+data/processed/*
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+
+# Large model binaries (model cards in models/*.md ARE tracked)
+models/*.joblib
+models/*.pkl
+models/*.keras
+models/*.h5
+models/*.pt
+
+# Secrets
+.env
